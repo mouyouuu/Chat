@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: "JetBrains Mono", "Courier New", monospace;
+  background: #0f172a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.app-shell {
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(12, 18, 30, 0.98)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.025) 0, rgba(255, 255, 255, 0.025) 1px, transparent 1px, transparent 44px);
+}
+
+.icon-button {
+  @apply inline-grid h-10 w-10 place-items-center rounded-md border transition focus:outline-none focus:ring-2 focus:ring-cyan-300/50;
+}
+
+.icon-text-button {
+  @apply inline-flex h-10 items-center gap-2 rounded-md border px-3 text-sm font-black transition focus:outline-none focus:ring-2 focus:ring-cyan-300/50;
+}
+
+.form-input {
+  @apply h-11 w-full rounded-md border border-slate-700/90 bg-slate-900 px-3 text-sm font-semibold text-slate-100 outline-none transition placeholder:text-slate-600 focus:border-cyan-400/70 focus:ring-2 focus:ring-cyan-400/20;
+}
+
+.settings-section {
+  @apply rounded-md border border-white/10 bg-slate-900/60 p-4;
+}
+
+.section-heading {
+  @apply mb-4 flex items-center gap-2 text-sm font-black uppercase;
+}
+
+.message-row {
+  @apply flex min-h-11 w-full animate-message-in items-start gap-2 rounded-md px-3 py-2 font-mono shadow-sm ring-1 ring-white/5;
+}
+
+.platform-badge {
+  @apply inline-flex h-6 shrink-0 items-center gap-2 rounded-md border px-2 text-[11px] font-black uppercase leading-none;
+}
+
+.chat-scroll,
+.settings-scroll {
+  scrollbar-color: rgba(6, 182, 212, 0.55) rgba(15, 23, 42, 0.8);
+  scrollbar-width: thin;
+}
+
+.chat-scroll::-webkit-scrollbar,
+.settings-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.chat-scroll::-webkit-scrollbar-thumb,
+.settings-scroll::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.48);
+  border: 3px solid rgba(15, 23, 42, 0.95);
+  border-radius: 999px;
+}
+
+.chat-scroll::-webkit-scrollbar-track,
+.settings-scroll::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.9);
+}
+
+@keyframes message-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-message-in {
+  animation: message-in 160ms ease-out;
+}
+
+@media (max-width: 640px) {
+  .message-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .message-row p {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
