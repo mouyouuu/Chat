@@ -102,11 +102,13 @@ src/
 
 ### GitHub Pages
 
-Un workflow GitHub Actions est déjà inclus dans `.github/workflows/deploy.yml`. Après le push sur `main` :
+Un workflow GitHub Actions est déjà inclus dans `.github/workflows/deploy.yml`. Après chaque push sur `main`, il build l’app et publie le dossier `dist` dans la branche `gh-pages`.
+
+Pour activer l’URL publique la première fois :
 
 1. Va dans `Settings > Pages`.
-2. Choisis `Build and deployment > Source: GitHub Actions`.
-3. Ajoute les secrets nécessaires dans `Settings > Secrets and variables > Actions`.
+2. Choisis `Build and deployment > Source: Deploy from a branch`.
+3. Sélectionne `Branch: gh-pages` et le dossier `/root`.
 4. Le site sera publié sur `https://TON_USER.github.io/NOM_DU_REPO/`.
 
 ## Troubleshooting
